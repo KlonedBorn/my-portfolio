@@ -1,0 +1,128 @@
+// Copyright 2022 Kyle King
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+@import 'config';
+@import 'menu';
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    @include overlay-background;
+    background-color: $primary-color;
+    color: set-text-color($primary-color);
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI' , 'Tahoma', 'Geneva', 'Verdana', 'sans-serif';
+    line-height: 1.5;
+}
+
+// Changing heading properties
+h1,
+h2,
+h3{
+    margin: 0;
+    font-weight: 400;
+    &.lg-heading {
+        font-size: 6rem;
+    }
+    &.sm-heading{
+        margin-bottom: 2rem;
+        padding:  0.2rem 1rem;
+        background: rgba(lighten($primary-color,2),0.9);
+    }
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+header {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+}
+
+.text-secondary {
+    color: $secondary-color;
+}
+
+main {
+    padding: 4rem;
+    // height: 100%;
+    min-height: calc(100vh - 60px);
+    .icons {
+        margin-top: 1rem;
+        a {
+            padding: 0.4rem;
+
+            &:hover {
+                color:#0096FF;
+                @include mx-ease-out()
+            }
+        }
+    }
+    &#home{
+        overflow: hidden;
+        h1 {
+            margin-top:20vh;
+        }
+    }
+}
+
+.about-info {
+    background: #444;
+    display: grid;
+    grid-template-areas: 'bioimage bio bio' 'job1 job2 job3';
+    grid-template-columns: repeat(3, 1fr);    
+    .bio-image {
+        grid-area: bioimage;
+        margin:auto;
+        border-radius: 50%;
+        border: $secondary-color 3px solid;
+    }
+    
+    .bio{
+        grid-area:bio;
+    }
+    
+    .job-1 {
+        grid-area: job1;
+    }
+    
+    .job-2 {
+        grid-area: job2;
+    }
+    
+    .job-3 {
+        grid-area: job3;
+    }
+    .job {
+        background: lighten($color: $primary-color, $amount: 5);
+        padding: 0.5rem;
+        border-bottom: $secondary-color 5px solid;
+    }
+}
+
+#main-footer {
+    text-align: center;
+    padding: 1rem;
+    background: darken($color: $primary-color, $amount: 10);
+    color: set-text-color($primary-color);
+    height: 60px;
+}
+@import 'mobile';
